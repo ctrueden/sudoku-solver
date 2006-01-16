@@ -187,20 +187,37 @@ public class Sudoku extends JPanel implements ActionListener, Runnable {
           else total[f] += end - start;
           if (i % 10 == 1) System.out.print(".");
         }
-        if (solutions == null) continue;
+        if (solutions == null) {
+          total[f] = -1; // no solution
+          continue;
+        }
         double time = (double) total[f] / num;
-        if (total[f] == 0) total[f] = 1;
         boolean easier = total[0] > total[f];
         long ratio;
-        if (easier) ratio = (total[0] + (total[f] / 2)) / total[f];
-        else ratio = (total[f] + (total[0] / 2)) / total[0];
+        if (easier) {
+          ratio = total[f] == 0 ? -1 :
+            (total[0] + (total[f] / 2)) / total[f];
+        }
+        else {
+          ratio = total[0] == 0 ? -2 :
+            (total[f] + (total[0] / 2)) / total[0];
+        }
         if (numSolutions > 1) {
           System.out.print(" [" + numSolutions + " solutions]");
         }
         System.out.print(" " + time + " ms");
         if (f > 0) {
-          if (ratio == 1) {
+          if (total[0] == -1) {
+            // first board has no solutions
+          }
+          else if (ratio == 1 || (total[0] == 0 && total[f] == 0)) {
             System.out.println(" (about as hard as " + args[0] + ")");
+          }
+          else if (ratio == -1) { // total[f] == 0
+            System.out.println(" (infinitely easier than " + args[0] + ")");
+          }
+          else if (ratio == -2) { // total[0] == 0
+            System.out.println(" (infinitely harder than " + args[0] + ")");
           }
           else {
             System.out.println(" (" + ratio + "x " +
