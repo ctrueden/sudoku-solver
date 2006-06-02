@@ -141,7 +141,8 @@ public class Sudoku extends JPanel implements ActionListener, Runnable {
 
   public static void main(String[] args) throws Exception {
     if (args.length < 1) {
-      System.out.println("Usage: java Sudoku board.txt [board2.txt ...]");
+      System.out.println("Usage: java com.restlesswarrior.sudoku.Sudoku " +
+        "board.txt [board2.txt ...]");
       System.exit(1);
     }
 
