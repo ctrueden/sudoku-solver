@@ -1,2 +1,3 @@
 #!/bin/sh
-java -mx256m com.restlesswarrior.sudoku.Sudoku $*
+test -d target/classes || mvn clean compile
+java -cp target/classes -mx256m net.restlesscoder.sudoku.Sudoku $*

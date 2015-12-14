@@ -1,6 +1,6 @@
 // Board.java
 
-package com.restlesswarrior.sudoku;
+package net.restlesscoder.sudoku;
 
 import java.io.*;
 import java.util.*;
