@@ -42,7 +42,7 @@
 	</prerequisites>
 
 	<scm>
-		<connection>scm:git:git://github.com/ctrueden/sudoku-solver</connection>
+		<connection>scm:git:https://github.com/ctrueden/sudoku-solver</connection>
 		<developerConnection>scm:git:git@github.com:ctrueden/sudoku-solver</developerConnection>
 		<tag>HEAD</tag>
 		<url>https://github.com/ctrueden/sudoku-solver</url>
